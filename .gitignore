@@ -151,3 +151,7 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Example data
+src/example.csv
+src/example.ts

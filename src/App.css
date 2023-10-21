@@ -1,3 +1,41 @@
 body {
-  padding: 32px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.previews {
+  background-color: #e9e9e9;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 500px;
+}
+
+.previews .card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.card a {
+  color: rgb(40, 97, 203);
+}
+
+.card .meta {
+  color:rgb(113, 119, 132);
+  font-size: 0.8em;
+}
+
+.card .photos {
+  overflow: hidden;
+}
+.card .photos img {
+  max-width: 300px;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+
+/* Hide raw output, but keep for inspection */
+.card .raw {
+  display: none;
 }
