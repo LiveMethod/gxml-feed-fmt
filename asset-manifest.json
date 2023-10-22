@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/ks-csv-to-xml/static/css/main.0a637cd9.css",
-    "main.js": "/ks-csv-to-xml/static/js/main.6c015281.js",
-    "index.html": "/ks-csv-to-xml/index.html",
-    "main.0a637cd9.css.map": "/ks-csv-to-xml/static/css/main.0a637cd9.css.map",
-    "main.6c015281.js.map": "/ks-csv-to-xml/static/js/main.6c015281.js.map"
+    "main.css": "/gxml-feed-fmt/static/css/main.0a637cd9.css",
+    "main.js": "/gxml-feed-fmt/static/js/main.6c015281.js",
+    "index.html": "/gxml-feed-fmt/index.html",
+    "main.0a637cd9.css.map": "/gxml-feed-fmt/static/css/main.0a637cd9.css.map",
+    "main.6c015281.js.map": "/gxml-feed-fmt/static/js/main.6c015281.js.map"
   },
   "entrypoints": [
     "static/css/main.0a637cd9.css",
