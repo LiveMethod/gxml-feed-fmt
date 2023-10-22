@@ -1,6 +1,7 @@
 {
   "name": "gxml-feed-fmt",
   "version": "0.1.0",
+  "homepage": "https://github.io/ks-csv-to-xml",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -22,6 +23,8 @@
     "xml-formatter": "^3.5.0"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
