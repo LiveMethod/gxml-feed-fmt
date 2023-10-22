@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
+import xmlf from 'xml-formatter';
 import './App.css';
-import CSVtoKS from './ConvertReview';
+import CSVtoJSON from './CSVtoJSON';
+import JSONtoXML from './JSONtoXML';
 import example from './example';
 import Preview from './ReviewPreview';
+import Upload from './FileUpload';
+import Download from './FileDownload';
+
 
 function App() {
-  const data = CSVtoKS(example)
+  
+  const [currentFile, setFile] = useState<string | null>(null);
   return (
-    <div className="App">
+    <div className="wrap">
+      <section className='ui'>
+        {!currentFile && <Upload currentFile={currentFile} setFile={setFile}/> }
+        {currentFile && <Download currentFile={currentFile}/>}
+      </section>
       <section className='previews'>
-        {data.map(Preview)}
+        {currentFile && ( CSVtoJSON(currentFile).map(Preview) )}
       </section>
     </div>
   );

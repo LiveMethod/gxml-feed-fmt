@@ -3,7 +3,7 @@ import { KSReview } from './types';
 
 function Preview(review:KSReview) {
   return (
-    <div className="card">
+    <div className="card" key={review.id}>
       <h3>{review.title}</h3>
       <span className='meta'>
         <a href={review.reviewURL}>{review.reviewerName}</a> | {review.timestamp.toString()}

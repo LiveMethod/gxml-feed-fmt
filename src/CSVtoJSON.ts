@@ -1,12 +1,13 @@
-import { relevantColNames, KSRelevantCols, KSReview } from "./types";
+import { relevantColNames, KSReview } from "./types";
 
 // Convert a CSV row into KS entries
-const CSVtoKS = (csvData: string):KSReview[] => {
+const CSVtoJSON = (csvData: string):KSReview[] => {
   // Min chars defining a line – anything shorter than this gets skipped (raw newlines, etc)
   const minLineChars = 3;
   
   // Each new line with a believable number of chars
-  let lines = csvData.split('\n').filter(l => l.length > minLineChars);
+  let lines = csvData.split(/[\n\r]+/).filter(l => l.length > minLineChars);
+  console.log(lines.length)
   if(lines.length < 2) throw new Error("no rows");
 
   const colNames = (lines.shift() || '').split(',');
@@ -17,7 +18,7 @@ const CSVtoKS = (csvData: string):KSReview[] => {
   relevantColNames.forEach(rN => {
     if(!colNames.includes(rN)) missingCols.push(rN)
   })
-  if(missingCols.length > 0) throw new Error(`Missing columns ${missingCols} in ${colNames}`);
+  if(missingCols.length > 0) throw new Error(`Missing columns ${missingCols} in ${colNames.length} list ${colNames}`);
 
 
   const rowToReview = (row:string) => {
@@ -48,8 +49,10 @@ const CSVtoKS = (csvData: string):KSReview[] => {
       id: temp.id,
       timestamp: new Date(temp.created_at),
       reviewURL: temp.review_URL,
-      title: temp.title,
-      content: temp.body,
+      // Data here is dirty af. Some things are escaped, others aren't.
+      // We unescape here so we can re-escape in full at XML compile
+      title: unescapeXML(temp.title),
+      content: unescapeXML(temp.body),
       starRating: Number(temp.rating) || 5, // lol
       photoURLs: temp.reviewer_image.split(','),
       products: [{
@@ -68,4 +71,12 @@ const CSVtoKS = (csvData: string):KSReview[] => {
   return filtered;
 }
 
-export default CSVtoKS;
+const unescapeXML = (unsafe:string) => {
+  return unsafe.replace('&amp;', '&',)
+          .replace('&lt;', '<')
+          .replace('&gt;', '>')
+          .replace('&quot;', '"' )
+          .replace('&apos;', "'");
+}
+
+export default CSVtoJSON;
