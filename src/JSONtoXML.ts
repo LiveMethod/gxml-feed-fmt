@@ -27,8 +27,8 @@ const reviewToXML = (review: KSReview) => {
   return(`<review>
     <reviewer>
       <name is_anonymous="${review.reviewerName ? 'false' : 'true'}">${review.reviewerName || 'Anonymous'}</name>
-      <review_timestamp>${review.timestamp.toISOString()}</review_timestamp>
     </reviewer>
+    <review_timestamp>${review.timestamp.toISOString()}</review_timestamp>
     ${/* For whatever reason, titles are unescaped, but content is already escaped */ ''}
     <title>${escapeXML(review.title)}</title>
     <content>${escapeXML(review.content)}</content>

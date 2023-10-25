@@ -31,7 +31,7 @@ const Download:
       window.URL.revokeObjectURL(url);
     };
 
-    return <a className='btn btn--download' onClick={handleDownload}>Download XML</a>
+    return <a className='btn btn--download' onClick={handleDownload}>Download XML v2</a>
   }catch(err){
     return <h4>Error: {String(err)}</h4>;
   }

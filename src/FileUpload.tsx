@@ -25,7 +25,7 @@ const Upload: React.FC<{currentFile: string|null
   
   return (
     <div>
-      <label htmlFor="upload" className="btn btn--upload">Upload CSV</label>
+      <label htmlFor="upload" className="btn btn--upload">Upload CSV v2</label>
       <input
         id='upload'
         type="file"
